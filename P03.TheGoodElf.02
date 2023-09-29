@@ -5,15 +5,21 @@ public class TheGoodElf {
 
         Scanner scanner = new Scanner(System.in);
 
-        String firstInput = scanner.nextLine();
-        String secondInput = scanner.nextLine();
+        System.out.println("3. The Good Elf\n" +
+                "In a magical world there is an elf that loves to write the words he hears. Every time he hears\n" +
+                "a word he writes it down. And since he loves words and letters so much he checks if the new\n" +
+                "word is similar to the previous one. So he crosses out letters until the two words contain the\n" +
+                "same letters. Please write a program that will help our kind elf.");
 
-        //Input example:
-        //First word: c o d e w a r s
-        //Second word: h a c k e r r a n k
+        System.out.println("Example:\n" +
+                "First word: c o d e w a r s\n" +
+                "Second word: h a c k e r r a n k\n" +
+                "Result: 10");
 
-        //First word: i r i n a
-        //Second word: g e o r g i
+        System.out.println("Example:\n" +
+                "First word: I r i n a\n" +
+                "Second word: G e o r g i\n" +
+                "Result: 7");
 
         String[] firstToken = firstInput.split(":\\s++");
         String[] secondToken = secondInput.split(":\\s++");
