@@ -6,11 +6,37 @@ public class ColorfulBalls {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("1. Colorful Balls\n" +
+                "In a box, there's a different count of balls in different colors, \n" +
+                " which we receive as an input in the following format: \n" +
+                " \"Color: count\", until we receive an \"End\" command. \n" +
+                "After that, we are allowed to remove balls from that box, \n" +
+                "but we can't look at their color. We need to write a program \n" +
+                "that prints the smallest count of balls we must take out, \n" +
+                "so we are sure there is only one color left in the box. \n");
+        System.out.println("""
+                Input example:
+                "Red: 5
+                Green: 3
+                Blue: 2
+                End
+                Output: 5
+                """);
+
+        System.out.println("""
+                Input example:
+                "Red: 5
+                Green: 3
+                Blue: 8
+                Red: 10
+                End
+                Output: 11
+                """);
+
+        System.out.println("Enter Colour: balls count:");
         String input = scanner.nextLine();
 
-        Map<String, Integer> ballCounts = new HashMap<>();
-
-        int minCountBalls = Integer.MAX_VALUE;
+        Map<String, Integer> ballBox = new HashMap<>();
 
         while (!input.equals("End")) {
             String[] tokens = input.split(":\\s++");
@@ -18,20 +44,28 @@ public class ColorfulBalls {
             String ballColour = tokens[0];
             int ballCount = Integer.parseInt(tokens[1]);
 
-            if (!ballCounts.containsKey(ballColour)) {
-                ballCounts.put(ballColour, 0);
+            if (!ballBox.containsKey(ballColour)) {
+                ballBox.put(ballColour, ballCount);
+            } else {
+                ballBox.put(ballColour, ballBox.get(ballColour) + ballCount);
             }
 
-            ballCounts.put(ballColour, ballCounts.get(ballColour) + ballCount);
-
-            for (int count : ballCounts.values()) {
-                if (count < minCountBalls) {
-                    minCountBalls = count;
-                }
-            }
             input = scanner.nextLine();
         }
 
-        System.out.printf("Smallest count of balls: %d" ,minCountBalls);
+        int maxCount = 0;
+        int totalBalls = 0;
+
+        for (int count : ballBox.values()) {
+            if (count > maxCount) {
+                maxCount = count;
+            }
+            totalBalls += count;
+        }
+
+        int ballsToRemove = totalBalls - maxCount;
+
+        System.out.printf("We must take out %d balls from the box.", ballsToRemove);
     }
 }
+
