@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class TheGoodElf {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        String firstInput = scanner.nextLine();
+        String secondInput = scanner.nextLine();
+
+        //Input example:
+        //First word: c o d e w a r s
+        //Second word: h a c k e r r a n k
+
+        //First word: i r i n a
+        //Second word: g e o r g i
+
+        String[] firstToken = firstInput.split(":\\s++");
+        String[] secondToken = secondInput.split(":\\s++");
+
+        String[] firstWord = firstToken[1].split("\\s++");
+        String[] secondWord = secondToken[1].split("\\s++");
+
+        String firstCompleteWord = String.join("", firstWord);
+        String secondCompleteWord = String.join("", secondWord);
+
+
+        for (char c : firstCompleteWord.toCharArray()) {
+            if (secondCompleteWord.contains(String.valueOf(c))) {
+                firstCompleteWord = firstCompleteWord.replaceFirst(String.valueOf(c), "");
+                secondCompleteWord = secondCompleteWord.replaceFirst(String.valueOf(c), "");
+            }
+        }
+
+        int removedLetters = firstCompleteWord.length() + secondCompleteWord.length();
+
+        System.out.println("Result: " + removedLetters);
+
+    }
+}
