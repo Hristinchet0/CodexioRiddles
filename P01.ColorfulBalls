@@ -1,0 +1,37 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class ColorfulBalls {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String input = scanner.nextLine();
+
+        Map<String, Integer> ballCounts = new HashMap<>();
+
+        int minCountBalls = Integer.MAX_VALUE;
+
+        while (!input.equals("End")) {
+            String[] tokens = input.split(":\\s++");
+
+            String ballColour = tokens[0];
+            int ballCount = Integer.parseInt(tokens[1]);
+
+            if (!ballCounts.containsKey(ballColour)) {
+                ballCounts.put(ballColour, 0);
+            }
+
+            ballCounts.put(ballColour, ballCounts.get(ballColour) + ballCount);
+
+            for (int count : ballCounts.values()) {
+                if (count < minCountBalls) {
+                    minCountBalls = count;
+                }
+            }
+            input = scanner.nextLine();
+        }
+
+        System.out.printf("Smallest count of balls: %d" ,minCountBalls);
+    }
+}
