@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class TheGoodElf {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first word: ");
+        String firstWord = scanner.nextLine().toLowerCase();
+
+        System.out.print("Enter the second word: ");
+        String secondWord = scanner.nextLine().toLowerCase();
+
+
+        for (char c : firstWord.toCharArray()) {
+            if (secondWord.contains(String.valueOf(c))) {
+                firstWord = firstWord.replaceFirst(String.valueOf(c), "");
+                secondWord = secondWord.replaceFirst(String.valueOf(c), "");
+            }
+        }
+
+        int removedLetters = firstWord.length() + secondWord.length();
+
+        System.out.println("Result: " + removedLetters);
+
+    }
+}
