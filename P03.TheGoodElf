@@ -8,6 +8,14 @@ public class TheGoodElf {
         System.out.print("Enter the first word: ");
         String firstWord = scanner.nextLine().toLowerCase();
 
+        //Input example:
+        //codewars
+        //hackerrank
+
+        //Input example:
+        //irina
+        //georgi
+
         System.out.print("Enter the second word: ");
         String secondWord = scanner.nextLine().toLowerCase();
 
