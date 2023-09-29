@@ -16,7 +16,7 @@ public class Rabbit {
         System.out.println("""
                 Example input data:
                 Garden size (matrix): 5
-                Garden template: C is carrot is empty spaces
+                Garden template: C is carrot, - is empty spaces
                 CC-CC
                 CC-CC
                 -----
@@ -27,7 +27,7 @@ public class Rabbit {
         System.out.println("""
                 Example input data:
                 Garden size (matrix): 5
-                "Garden template: C is carrot - is empty spaces
+                "Garden template: C is carrot, - is empty spaces
                 CC---
                 CC---
                 -----
