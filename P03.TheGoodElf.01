@@ -5,16 +5,24 @@ public class TheGoodElf {
 
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("3. The Good Elf\n" +
+                "In a magical world there is an elf that loves to write the words he hears. Every time he hears\n" +
+                "a word he writes it down. And since he loves words and letters so much he checks if the new\n" +
+                "word is similar to the previous one. So he crosses out letters until the two words contain the\n" +
+                "same letters. Please write a program that will help our kind elf.");
+
+        System.out.println("Example:\n" +
+                "codewars\n" +
+                "hackerrank\n" +
+                "Result: 10");
+
+        System.out.println("Example:\n" +
+                "Irina\n" +
+                "Georgi\n" +
+                "Result: 7");
+
         System.out.print("Enter the first word: ");
         String firstWord = scanner.nextLine().toLowerCase();
-
-        //Input example:
-        //codewars
-        //hackerrank
-
-        //Input example:
-        //irina
-        //georgi
 
         System.out.print("Enter the second word: ");
         String secondWord = scanner.nextLine().toLowerCase();
