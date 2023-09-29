@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+public class Rabbit {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("2. Rabbit\n" +
+                "Once upon a time there was a rabbit who loved to steal carrots from the gardens of the good software developers. \n" +
+                "Every time he leaped in a garden, he wanted to collect all the carrots. \n" +
+                "Can you help the rabbit find how many times he has to jump to eat all the carrots? \n" +
+                "The gardens are always square, he always enters from the top left corner \n" +
+                "and he has to jump once for one group of carrots that have no space between each other vertically or horizontally. \n");
+
+        printRabbit();
+
+        System.out.println("""
+                Example input data:
+                Garden size (matrix): 5
+                Garden template: C is carrot is empty spaces
+                CC-CC
+                CC-CC
+                -----
+                CC---
+                CC---
+                Output: 3 \n""");
+
+        System.out.println("""
+                Example input data:
+                Garden size (matrix): 5
+                "Garden template: C is carrot - is empty spaces
+                CC---
+                CC---
+                -----
+                ---CC
+                ---CC
+                Output: 2 \n""");
+
+        System.out.print("Enter the size of the garden: ");
+        int gardenSize = Integer.parseInt(scanner.nextLine());
+
+        char[][] garden = new char[gardenSize][gardenSize];
+
+        System.out.println("Enter the garden template ('C' for carrots, '-' for empty spaces):");
+
+        for (int i = 0; i < gardenSize; i++) {
+            String row = scanner.next();
+            for (int j = 0; j < gardenSize; j++) {
+                garden[i][j] = row.charAt(j);
+            }
+        }
+
+        int jumps = countCarrotGroups(garden);
+
+        System.out.println("The rabbit needs to jump " + jumps + " times to collect all the carrots.");
+    }
+
+    private static int countCarrotGroups(char[][] garden) {
+        int jumps = 0;
+
+        for (int i = 0; i < garden.length; i++) {
+            for (int j = 0; j < garden[i].length; j++) {
+                if (garden[i][j] == 'C') {
+                    jumps++;
+                    collectCarrots(garden, i, j);
+                }
+            }
+        }
+
+        return jumps;
+    }
+
+    private static void collectCarrots(char[][] garden, int row, int col) {
+        for (int i = row; i < row + 2; i++) {
+            for (int j = col; j < col + 2; j++) {
+                if (i >= 0 && i < garden.length && j >= 0 && j < garden[0].length && garden[i][j] == 'C') {
+                    garden[i][j] = '-';
+                }
+            }
+        }
+    }
+
+    private static void printRabbit() {
+        System.out.println("  /\\_/\\");
+        System.out.println(" ( o.o )");
+        System.out.println(" > ^ <");
+        System.out.println();
+    }
+}
