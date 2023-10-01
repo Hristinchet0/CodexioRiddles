@@ -5,14 +5,15 @@ import java.util.List;
 
 public class Shop {
 
+    private static Shop instance = new Shop();
+
     private List<Worker> workers = new ArrayList<>();
 
-    private static final class InstanceHolder {
-        private static final Shop instance = new Shop();
+    private Shop() {
     }
-
-    public static synchronized Shop getInstance() {
-        return InstanceHolder.instance;
+    
+    public static Shop getInstance() {
+        return instance;
     }
 
     public void addWorker(Worker worker) {
